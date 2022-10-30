@@ -51,7 +51,12 @@ Content-Type: application/json
 
 {"nombre":"gerardo", "email":"g@gmail.com"}
     
+###
+//provando validaciones
+POST http://localhost:3000/api/Authors
+Content-Type: application/json
 
+{"nombre":"gerardo" }
 
 ###
 

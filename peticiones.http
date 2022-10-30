@@ -26,6 +26,19 @@ Content-type: application/json
     "idAutorPertenece":"1"
 }
 
+
+###
+// prueba validacion
+PUT http://localhost:3000/api/Posts http/1.1
+Content-type: application/json
+
+{
+    "titulo": "locura unica",
+    "descripcion": "primera modificacion de ese tipo",
+    "fechaCreacion": "2022-10-23 10:13:50 ",
+   
+    "idAutorPertenece":"1"
+}
 ###
 
 DELETE  http://localhost:3000/api/Posts http/1.1
@@ -39,6 +52,17 @@ Content-type: application/json
     "idAutorPertenece":"1"
 }
 
+###
+//prueba validacion
+DELETE  http://localhost:3000/api/Posts http/1.1
+Content-type: application/json
+
+{
+    "titulo": "locura unica",
+    "descripcion": "primera modificacion de ese tipo",
+    "fechaCreacion": "2022-10-23 10:13:50 "
+    
+}
 ###
 
 
@@ -67,6 +91,16 @@ Content-type: application/json
 "email":"g@gmail.com",
 "imagen": "kdjflshdfl"
 }
+
+###
+// prueba validacion
+PUT http://localhost:3000/api/Authors http/1.1
+Content-type: application/json
+
+{"nombre":"gerardo", 
+"email":"g@gmail.com"
+
+}
 ###
 
 DELETE  http://localhost:3000/api/Authors http/1.1
@@ -76,3 +110,4 @@ Content-type: application/json
 "email":"g@gmail.com",
 "imagen": "kdjflshdfl"
 }
+

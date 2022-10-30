@@ -55,6 +55,14 @@ router.post("/", async (req, res) => {
 //update
 
 router.put("/", async (req, res) => {
+  const elementos = { ...req.body };
+  if (
+    elementos.nombre === undefined ||
+    elementos.email === undefined ||
+    elementos.imagen === undefined
+  ) {
+    res.json({ error: "No se mandaron los suficientes parametros" });
+  }
   try {
     const [result] = await updateAuthor({ ...req.body });
     res.json(result);
@@ -66,6 +74,10 @@ router.put("/", async (req, res) => {
 //delete
 
 router.delete("/", async (req, res) => {
+  const elementos = { ...req.body };
+  if (elementos.email === undefined) {
+    res.json({ error: "No se mandaron los suficientes parametros" });
+  }
   try {
     const [result] = await deleteAuthor({ ...req.body });
     res.json(result);

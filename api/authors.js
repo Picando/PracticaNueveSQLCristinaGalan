@@ -40,6 +40,10 @@ router.get("/:idAutor", async (req, res, next) => {
 //create
 
 router.post("/", async (req, res) => {
+  const elementos = { ...req.body };
+  if (elementos.nombre === undefined || elementos.email === undefined) {
+    res.json({ error: "No se mandaron los suficientes parametros" });
+  }
   try {
     const [result] = await createAuthor({ ...req.body });
     res.json(result);

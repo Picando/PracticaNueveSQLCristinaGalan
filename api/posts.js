@@ -41,11 +41,22 @@ router.get("/:idAutor", async (req, res, next) => {
 //create
 
 router.post("/", async (req, res) => {
-  try {
-    const [result] = await createPost({ ...req.body });
-    res.json(result);
-  } catch (err) {
-    res.json({ error: err.message });
+  const elementos = { ...req.body };
+  if (
+    elementos.titulo === undefined ||
+    elementos.descripcion === undefined ||
+    elementos.fechaCreacion === undefined ||
+    elementos.categoria === undefined ||
+    elementos.idAutorPertenece === undefined
+  ) {
+    res.json({ error: "No se mandaron los suficientes parametros" });
+  } else {
+    try {
+      const [result] = await createPost({ ...req.body });
+      res.json(result);
+    } catch (err) {
+      res.json({ error: err.message });
+    }
   }
 });
 
@@ -61,12 +72,13 @@ router.put("/", async (req, res) => {
     elementos.idAutorPertenece === undefined
   ) {
     res.json({ error: "No se mandaron los suficientes parametros" });
-  }
-  try {
-    const [result] = await updatePost({ ...req.body });
-    res.json(result);
-  } catch (err) {
-    res.json({ error: err.message });
+  } else {
+    try {
+      const [result] = await updatePost({ ...req.body });
+      res.json(result);
+    } catch (err) {
+      res.json({ error: err.message });
+    }
   }
 });
 
@@ -79,12 +91,13 @@ router.delete("/", async (req, res) => {
     elementos.idAutorPertenece === undefined
   ) {
     res.json({ error: "No se mandaron los suficientes parametros" });
-  }
-  try {
-    const [result] = await deletePost({ ...req.body });
-    res.json(result);
-  } catch (err) {
-    res.json({ error: err.message });
+  } else {
+    try {
+      const [result] = await deletePost({ ...req.body });
+      res.json(result);
+    } catch (err) {
+      res.json({ error: err.message });
+    }
   }
 });
 

@@ -43,12 +43,13 @@ router.post("/", async (req, res) => {
   const elementos = { ...req.body };
   if (elementos.nombre === undefined || elementos.email === undefined) {
     res.json({ error: "No se mandaron los suficientes parametros" });
-  }
-  try {
-    const [result] = await createAuthor({ ...req.body });
-    res.json(result);
-  } catch (err) {
-    res.json({ error: err.message });
+  } else {
+    try {
+      const [result] = await createAuthor({ ...req.body });
+      res.json(result);
+    } catch (err) {
+      res.json({ error: err.message });
+    }
   }
 });
 
@@ -62,12 +63,13 @@ router.put("/", async (req, res) => {
     elementos.imagen === undefined
   ) {
     res.json({ error: "No se mandaron los suficientes parametros" });
-  }
-  try {
-    const [result] = await updateAuthor({ ...req.body });
-    res.json(result);
-  } catch (err) {
-    res.json({ error: err.message });
+  } else {
+    try {
+      const [result] = await updateAuthor({ ...req.body });
+      res.json(result);
+    } catch (err) {
+      res.json({ error: err.message });
+    }
   }
 });
 
@@ -77,12 +79,13 @@ router.delete("/", async (req, res) => {
   const elementos = { ...req.body };
   if (elementos.email === undefined) {
     res.json({ error: "No se mandaron los suficientes parametros" });
-  }
-  try {
-    const [result] = await deleteAuthor({ ...req.body });
-    res.json(result);
-  } catch (err) {
-    res.json({ error: err.message });
+  } else {
+    try {
+      const [result] = await deleteAuthor({ ...req.body });
+      res.json(result);
+    } catch (err) {
+      res.json({ error: err.message });
+    }
   }
 });
 
